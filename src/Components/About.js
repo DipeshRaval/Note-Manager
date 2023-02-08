@@ -1,19 +1,7 @@
-import React, { useContext, useEffect } from "react";
-import noteContext from "../Context/NoteContext";
+import React from "react";
 
 const About = () => {
-  const obj = useContext(noteContext);
-
-  useEffect(() => {
-    obj.update();
-    // eslint-disable-next-line
-  }, []);
-
-  return (
-    <h1>
-      Name : {obj.state.name} and Branch : {obj.state.Branch}
-    </h1>
-  );
+  return <h3>About Page</h3>;
 };
 
 export default About;

@@ -10,8 +10,8 @@ function App() {
     <>
       <NoteState>
         <Router>
-          <div className="App">
-            <Navbar />
+          <Navbar />
+          <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
