@@ -1,8 +1,15 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const { showAlert } = props;
   let location = useLocation();
+  const navigator = useNavigate();
+  const logOut = () => {
+    localStorage.removeItem("token");
+    navigator("/login");
+    showAlert("Log Out Successfully", "success");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,12 +53,24 @@ export default function Navbar() {
               </li>
             </ul>
 
-            <Link to="/login" className="btn btn-primary mx-1" role="button">
-              Login
-            </Link>
-            <Link to="/signup" className="btn btn-primary" role="button">
-              Sign Up
-            </Link>
+            {localStorage.getItem("token") ? (
+              <button className="btn btn-primary mx-1" onClick={logOut}>
+                Log Out
+              </button>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="btn btn-primary mx-1"
+                  role="button"
+                >
+                  Login
+                </Link>
+                <Link to="/signup" className="btn btn-primary" role="button">
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
