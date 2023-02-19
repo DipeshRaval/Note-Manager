@@ -14,6 +14,11 @@ export default function AddNote() {
   const clickHandle = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setNote({
+      title: "",
+      description: "",
+      tag: "",
+    });
   };
 
   const onChnage = (e) => {
@@ -35,6 +40,7 @@ export default function AddNote() {
             id="exampleInputEmail1"
             onChange={onChnage}
             name="title"
+            value={note.title}
             aria-describedby="emailHelp"
           />
         </div>
@@ -48,6 +54,7 @@ export default function AddNote() {
             cols="30"
             name="description"
             rows="5"
+            value={note.description}
             onChange={onChnage}
           ></textarea>
         </div>
@@ -61,10 +68,16 @@ export default function AddNote() {
             id="tag"
             onChange={onChnage}
             name="tag"
+            value={note.tag}
             aria-describedby="emailHelp"
           />
         </div>
-        <button type="submit" onClick={clickHandle} className="btn btn-primary">
+        <button
+          disabled={note.description.length < 5 || note.title.length < 5}
+          type="submit"
+          onClick={clickHandle}
+          className="btn btn-primary"
+        >
           Add Note
         </button>
       </form>

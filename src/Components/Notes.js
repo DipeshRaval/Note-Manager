@@ -87,6 +87,8 @@ const Notes = () => {
                     onChange={onChnage}
                     name="etitle"
                     value={note.etitle}
+                    minLength={5}
+                    required
                     aria-describedby="emailHelp"
                   />
                 </div>
@@ -100,6 +102,8 @@ const Notes = () => {
                     cols="30"
                     name="edescription"
                     rows="5"
+                    minLength={5}
+                    required
                     value={note.edescription}
                     onChange={onChnage}
                   ></textarea>
@@ -130,6 +134,9 @@ const Notes = () => {
               </button>
               <button
                 type="button"
+                disabled={
+                  note.edescription.length < 5 || note.etitle.length < 5
+                }
                 onClick={clickHandle}
                 data-bs-dismiss="modal"
                 className="btn btn-primary"
@@ -142,6 +149,9 @@ const Notes = () => {
       </div>
 
       <h3 className="my-3">Your Notes : </h3>
+      <div className="container">
+        {notes.length === 0 && "No notes added yet"}
+      </div>
       <div className="row">
         {notes.map((note) => {
           return (
