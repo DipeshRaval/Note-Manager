@@ -5,7 +5,11 @@ export default function AddNote() {
   const context = useContext(noteContext);
   const { addNote } = context;
 
-  const [note, setNote] = useState({ title: "", description: "", tag: "" });
+  const [note, setNote] = useState({
+    title: "",
+    description: "",
+    tag: "default",
+  });
 
   const clickHandle = (e) => {
     e.preventDefault();
@@ -27,7 +31,7 @@ export default function AddNote() {
           </label>
           <input
             type="text"
-            className="form-control w-75 border border-dark border-1"
+            className="form-control border border-dark border-1"
             id="exampleInputEmail1"
             onChange={onChnage}
             name="title"
@@ -39,7 +43,7 @@ export default function AddNote() {
             Description :
           </label>
           <textarea
-            className="form-control w-75 border border-dark border-1"
+            className="form-control border border-dark border-1"
             id="exampleInputPassword1"
             cols="30"
             name="description"
@@ -47,8 +51,21 @@ export default function AddNote() {
             onChange={onChnage}
           ></textarea>
         </div>
+        <div className="mb-3">
+          <label htmlFor="tag" className="form-label">
+            Tag :
+          </label>
+          <input
+            type="text"
+            className="form-control border border-dark border-1"
+            id="tag"
+            onChange={onChnage}
+            name="tag"
+            aria-describedby="emailHelp"
+          />
+        </div>
         <button type="submit" onClick={clickHandle} className="btn btn-primary">
-          Add
+          Add Note
         </button>
       </form>
     </div>
