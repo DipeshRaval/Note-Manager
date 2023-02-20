@@ -32,7 +32,7 @@ export default function Signup(props) {
       Navigate("/");
       showAlert("Sign Up Successfully", "success");
     } else {
-      alert("E-mail already in use.. So try with another email");
+      showAlert("E-mail already in use.. So try with another email", "danger");
     }
   };
 

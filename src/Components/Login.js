@@ -31,7 +31,7 @@ export default function Login(props) {
       Navigate("/");
       showAlert("Logged In Successfully", "success");
     } else {
-      alert("Invalid creadentials");
+      showAlert("Invalid creadentials", "danger");
     }
   };
 
